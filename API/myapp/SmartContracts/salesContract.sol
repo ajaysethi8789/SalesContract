@@ -4,6 +4,7 @@ contract SaleContract {
     
     string shipperRole="shipper";
     string buyerRole="buyer";
+    string sellerRole="seller";
     
     struct SalesContract{
         uint salesContractID;
@@ -51,7 +52,7 @@ contract SaleContract {
 require(SalesContractList[salesContractID].salesContractID !=0);
 
 if(SalesContractList[salesContractID].visibilityStatus == false){
-    require(keccak256(role) == keccak256(buyerRole));
+    require(keccak256(role) == keccak256(buyerRole) || keccak256(role) == keccak256(sellerRole));
 }
 else{
     require(SalesContractList[salesContractID].visibilityStatus == true);
